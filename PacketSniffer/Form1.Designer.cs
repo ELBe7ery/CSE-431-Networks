@@ -30,19 +30,26 @@
         {
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.SelectAdapter_Button = new MaterialSkin.Controls.MaterialRaisedButton();
             this.DeviceListView = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.No = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Length = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.stopCaptureButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.startCapture_Button = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.SelectAdapter_Button = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -77,14 +84,6 @@
             this.materialDivider2.TabIndex = 9;
             this.materialDivider2.Text = "materialDivider1";
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(7, 60);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(790, 198);
-            this.richTextBox1.TabIndex = 9;
-            this.richTextBox1.Text = "";
-            // 
             // materialTabSelector1
             // 
             this.materialTabSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -97,6 +96,7 @@
             this.materialTabSelector1.Size = new System.Drawing.Size(839, 54);
             this.materialTabSelector1.TabIndex = 11;
             this.materialTabSelector1.Text = "MainTabNavigator";
+            this.materialTabSelector1.Click += new System.EventHandler(this.materialTabSelector1_Click);
             // 
             // materialTabControl1
             // 
@@ -123,6 +123,22 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Adapter Setting";
             // 
+            // SelectAdapter_Button
+            // 
+            this.SelectAdapter_Button.AutoSize = true;
+            this.SelectAdapter_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SelectAdapter_Button.Depth = 0;
+            this.SelectAdapter_Button.Icon = null;
+            this.SelectAdapter_Button.Location = new System.Drawing.Point(6, 6);
+            this.SelectAdapter_Button.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SelectAdapter_Button.Name = "SelectAdapter_Button";
+            this.SelectAdapter_Button.Primary = true;
+            this.SelectAdapter_Button.Size = new System.Drawing.Size(134, 36);
+            this.SelectAdapter_Button.TabIndex = 9;
+            this.SelectAdapter_Button.Text = "Select Adapter";
+            this.SelectAdapter_Button.UseVisualStyleBackColor = true;
+            this.SelectAdapter_Button.Click += new System.EventHandler(this.SelectAdapter_Button_Click);
+            // 
             // DeviceListView
             // 
             this.DeviceListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -131,7 +147,7 @@
             this.columnHeader1,
             this.columnHeader2});
             this.DeviceListView.Depth = 0;
-            this.DeviceListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.DeviceListView.Font = new System.Drawing.Font("Roboto", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.DeviceListView.ForeColor = System.Drawing.Color.Transparent;
             this.DeviceListView.FullRowSelect = true;
             this.DeviceListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -145,11 +161,17 @@
             this.DeviceListView.TabIndex = 7;
             this.DeviceListView.UseCompatibleStateImageBehavior = false;
             this.DeviceListView.View = System.Windows.Forms.View.Details;
+            this.DeviceListView.SelectedIndexChanged += new System.EventHandler(this.DeviceListView_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Adapters List";
             this.columnHeader1.Width = 657;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "asd";
+            this.columnHeader2.Width = 120;
             // 
             // materialFlatButton2
             // 
@@ -167,11 +189,12 @@
             this.materialFlatButton2.TabIndex = 8;
             this.materialFlatButton2.Text = "select any of the adapters above to start capturing packets";
             this.materialFlatButton2.UseVisualStyleBackColor = true;
+            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
-            this.tabPage2.Controls.Add(this.richTextBox1);
+            this.tabPage2.Controls.Add(this.listView1);
             this.tabPage2.Controls.Add(this.stopCaptureButton);
             this.tabPage2.Controls.Add(this.startCapture_Button);
             this.tabPage2.Controls.Add(this.materialFlatButton3);
@@ -181,6 +204,56 @@
             this.tabPage2.Size = new System.Drawing.Size(803, 297);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Packets";
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.No,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.Length,
+            this.columnHeader9});
+            this.listView1.Location = new System.Drawing.Point(3, 60);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(800, 233);
+            this.listView1.TabIndex = 10;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // No
+            // 
+            this.No.Text = "No";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Time";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Source";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Destination";
+            this.columnHeader6.Width = 100;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Protocol";
+            this.columnHeader7.Width = 141;
+            // 
+            // Length
+            // 
+            this.Length.Text = "Legnth";
+            this.Length.Width = 118;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Info";
+            this.columnHeader9.Width = 252;
             // 
             // stopCaptureButton
             // 
@@ -228,26 +301,7 @@
             this.materialFlatButton3.TabIndex = 0;
             this.materialFlatButton3.Text = "Current selected adapter : None";
             this.materialFlatButton3.UseVisualStyleBackColor = true;
-            // 
-            // SelectAdapter_Button
-            // 
-            this.SelectAdapter_Button.AutoSize = true;
-            this.SelectAdapter_Button.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SelectAdapter_Button.Depth = 0;
-            this.SelectAdapter_Button.Icon = null;
-            this.SelectAdapter_Button.Location = new System.Drawing.Point(6, 6);
-            this.SelectAdapter_Button.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SelectAdapter_Button.Name = "SelectAdapter_Button";
-            this.SelectAdapter_Button.Primary = true;
-            this.SelectAdapter_Button.Size = new System.Drawing.Size(134, 36);
-            this.SelectAdapter_Button.TabIndex = 9;
-            this.SelectAdapter_Button.Text = "Select Adapter";
-            this.SelectAdapter_Button.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "asd";
-            this.columnHeader2.Width = 120;
+            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
             // 
             // PacketSniffer
             // 
@@ -273,7 +327,6 @@
         #endregion
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialDivider materialDivider2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -286,6 +339,14 @@
         private MaterialSkin.Controls.MaterialRaisedButton startCapture_Button;
         private MaterialSkin.Controls.MaterialRaisedButton SelectAdapter_Button;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader No;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader Length;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }
 
