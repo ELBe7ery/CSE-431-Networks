@@ -47,9 +47,12 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Length = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.stopCaptureButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.startCapture_Button = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -63,7 +66,7 @@
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.Enabled = false;
             this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(13, 471);
+            this.materialFlatButton1.Location = new System.Drawing.Point(13, 484);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -93,7 +96,7 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(-12, 62);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(839, 54);
+            this.materialTabSelector1.Size = new System.Drawing.Size(882, 54);
             this.materialTabSelector1.TabIndex = 11;
             this.materialTabSelector1.Text = "MainTabNavigator";
             this.materialTabSelector1.Click += new System.EventHandler(this.materialTabSelector1_Click);
@@ -103,11 +106,11 @@
             this.materialTabControl1.Controls.Add(this.tabPage1);
             this.materialTabControl1.Controls.Add(this.tabPage2);
             this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(3, 139);
+            this.materialTabControl1.Location = new System.Drawing.Point(3, 191);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(811, 323);
+            this.materialTabControl1.Size = new System.Drawing.Size(854, 284);
             this.materialTabControl1.TabIndex = 10;
             // 
             // tabPage1
@@ -119,7 +122,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(803, 297);
+            this.tabPage1.Size = new System.Drawing.Size(846, 258);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Adapter Setting";
             // 
@@ -201,7 +204,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(803, 297);
+            this.tabPage2.Size = new System.Drawing.Size(846, 258);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Packets";
             // 
@@ -214,10 +217,11 @@
             this.columnHeader6,
             this.columnHeader7,
             this.Length,
-            this.columnHeader9});
-            this.listView1.Location = new System.Drawing.Point(3, 60);
+            this.columnHeader9,
+            this.columnHeader3});
+            this.listView1.Location = new System.Drawing.Point(3, 53);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(800, 233);
+            this.listView1.Size = new System.Drawing.Size(843, 202);
             this.listView1.TabIndex = 10;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -253,7 +257,11 @@
             // columnHeader9
             // 
             this.columnHeader9.Text = "Info";
-            this.columnHeader9.Width = 252;
+            this.columnHeader9.Width = 167;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Application Protocol";
             // 
             // stopCaptureButton
             // 
@@ -303,11 +311,31 @@
             this.materialFlatButton3.UseVisualStyleBackColor = true;
             this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(14, 147);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(659, 20);
+            this.textBox1.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(728, 154);
+            this.label1.MaximumSize = new System.Drawing.Size(100, 1000);
+            this.label1.MinimumSize = new System.Drawing.Size(10, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Filter";
+            // 
             // PacketSniffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 522);
+            this.ClientSize = new System.Drawing.Size(869, 522);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.materialDivider2);
@@ -347,6 +375,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader Length;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Label label1;
     }
 }
 
