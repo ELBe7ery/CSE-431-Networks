@@ -28,12 +28,12 @@ namespace PacketSniffer
         {
             richTextBox1.Text = DataContainer.p.ToString().Replace("]", "\n").Replace("[","");
 
-            if (DataContainer.p.PayloadData == null)
+            if (DataContainer.b == null)
             {
                 richTextBox2.Text = "No Data To View";
                 return;
             }
-            foreach (var b in DataContainer.p.PayloadData)
+            foreach (var b in DataContainer.b)
             {
                 richTextBox2.Text += b + " ";
             }

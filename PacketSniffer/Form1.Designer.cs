@@ -51,6 +51,7 @@
             this.stopCaptureButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.startCapture_Button = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dev_sel_lable = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -191,6 +192,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.materialCheckBox1);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.listView1);
             this.tabPage2.Controls.Add(this.stopCaptureButton);
@@ -328,6 +330,22 @@
             this.dev_sel_lable.UseVisualStyleBackColor = true;
             this.dev_sel_lable.Click += new System.EventHandler(this.materialFlatButton3_Click);
             // 
+            // materialCheckBox1
+            // 
+            this.materialCheckBox1.AutoSize = true;
+            this.materialCheckBox1.Depth = 0;
+            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
+            this.materialCheckBox1.Location = new System.Drawing.Point(642, 15);
+            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckBox1.Name = "materialCheckBox1";
+            this.materialCheckBox1.Ripple = true;
+            this.materialCheckBox1.Size = new System.Drawing.Size(167, 30);
+            this.materialCheckBox1.TabIndex = 14;
+            this.materialCheckBox1.Text = "Export PCAP FORMAT";
+            this.materialCheckBox1.UseVisualStyleBackColor = true;
+            // 
             // PacketSniffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,6 +391,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBox1;
+        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
     }
 }
 

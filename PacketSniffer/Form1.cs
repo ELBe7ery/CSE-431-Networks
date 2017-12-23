@@ -13,11 +13,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using SharpPcap.LibPcap;
+
 namespace PacketSniffer
 {
     public partial class PacketSniffer : MaterialForm
     {
         public string uy;
+        private static CaptureFileWriterDevice captureFileWriter;
         // Array of devices
         CaptureDeviceList devices;
 
@@ -36,6 +39,7 @@ namespace PacketSniffer
         string dst_port;
         int[] flags = new int[] { 0, 0, 0, 0 };
         List<Packet> recieved_packets;
+        List<byte []> recieved_data;
         public PacketSniffer()
         {
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -44,6 +48,7 @@ namespace PacketSniffer
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal600, Primary.Teal800, Primary.Blue200, Accent.Orange700, TextShade.WHITE);
             //materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue600, Primary.Blue700, Primary.Blue200, Accent.Red100, TextShade.WHITE);
             InitializeComponent();
+            captureFileWriter = new CaptureFileWriterDevice("ouzt_pcap.pcap");
 
             // Now list all the adapters
             ListAllDevices();
@@ -106,6 +111,7 @@ namespace PacketSniffer
                 //Every time we invoke the scan, dismiss the old items
                 // Hopefully the garbage collector will handle this
                 recieved_packets = new List<Packet>();
+                recieved_data = new List<byte[]>();
             }
             catch (Exception ex)
             {
@@ -124,16 +130,23 @@ namespace PacketSniffer
         {
 
             // Parse the packet
-            Packet p = PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
+            if(materialCheckBox1.Checked)
+                captureFileWriter.Write(e.Packet);
+            Packet p =  PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
+            //p.PayloadData = e.Packet.Data;
+            info = p.ToString();
+            recieved_data.Add(e.Packet.Data);
+            recieved_packets.Add(p);
+            //recieved_packets.Add(PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data));
             type = p.GetType().ToString();
             String y = p.ToString();//get all packet data and decompose it to get src ip,dst ip and protocol type
                                     //Console.WriteLine(y);
-            p.PayloadData = e.Packet.Data;
+            
             //int src_port = ((TcpPacket)p).SourcePort;
             //if (((TcpPacket)p).SourcePort == 80 || ((TcpPacket)p).DestinationPort == 80)
             //    y = y + "x";
             //Append the recieved packet object to the array
-            recieved_packets.Add(p);
+            
             if (p != null)
             {
                 int j = 0;
@@ -257,7 +270,7 @@ namespace PacketSniffer
                 //source = y.Substring(129, 13);
                 // destination = y.Substring(161, 13);
                 // protocol = y.Substring(199, 6);
-                info = p.ToString();
+                //info = p.ToString();
                 DateTime time = e.Packet.Timeval.Date;
                 // s = String.Format("{0}:{1}:{2},{3} Len={4} {5}:{6} -> {7}:{8}",
                 // time.Hour, time.Minute, time.Second, time.Millisecond, len,
@@ -281,7 +294,7 @@ namespace PacketSniffer
                         item.SubItems.Add(info);
                         if (src_port == "80" || src_port == "443" || src_port == "593")
                         {
-                            item.SubItems.Add("HTTP");
+                            item.SubItems.Add("HTTP");item.SubItems.Add("HTTP");
                         }
                         else if (src_port == "49152 " || src_port == "53")
                         {
@@ -345,6 +358,7 @@ namespace PacketSniffer
             int flag3 = 0;
             int flag4 = 0;
             int flag5 = 0;
+            
             type = p.GetType().ToString();
             for (int i = 0; i < y.Length - 1; i++)
             {
@@ -469,7 +483,7 @@ namespace PacketSniffer
                         item.SubItems.Add(info);
                         if (src_port == "80" || src_port == "443" || src_port == "593")
                         {
-                            item.SubItems.Add("HTTP");
+                            item.SubItems.Add("HTTP");item.SubItems.Add("HTTP");
                         }
                         else if (src_port == "49152 " || src_port == "53")
                         {
@@ -508,7 +522,7 @@ namespace PacketSniffer
                         item.SubItems.Add(info);
                         if (src_port == "80" || src_port == "443" || src_port == "593")
                         {
-                            item.SubItems.Add("HTTP");
+                            item.SubItems.Add("HTTP");item.SubItems.Add("HTTP");
                         }
                         else if (src_port == "49152 " || src_port == "53")
                         {
@@ -547,7 +561,7 @@ namespace PacketSniffer
                         item.SubItems.Add(info);
                         if (src_port == "80" || src_port == "443" || src_port == "593")
                         {
-                            item.SubItems.Add("HTTP");
+                            item.SubItems.Add("HTTP");item.SubItems.Add("HTTP");
                         }
                         else if (src_port == "49152 " || src_port == "53")
                         {
@@ -588,7 +602,7 @@ namespace PacketSniffer
                         item.SubItems.Add(info);
                         if (src_port == "80" || src_port == "443" || src_port == "593")
                         {
-                            item.SubItems.Add("HTTP");
+                            item.SubItems.Add("HTTP");item.SubItems.Add("HTTP");
                         }
                         else if (src_port == "49152 " || src_port == "53")
                         {
@@ -613,7 +627,7 @@ namespace PacketSniffer
                         item.SubItems.Add(info);
                         if (src_port == "80" || src_port == "443" || src_port == "593")
                         {
-                            item.SubItems.Add("HTTP");
+                            item.SubItems.Add("HTTP");item.SubItems.Add("HTTP");
                         }
                         else if (src_port == "49152 " || src_port == "53")
                         {
@@ -659,6 +673,7 @@ namespace PacketSniffer
         {
             Form2 msg = new Form2();//when item from listview is clicked form2 will be shown
             DataContainer.p = recieved_packets[listView1.SelectedIndices[0]];
+            DataContainer.b = recieved_data[listView1.SelectedIndices[0]];
             msg.Show();
             //MessageBox.Show(listView1.SelectedIndices[0].ToString());
         }

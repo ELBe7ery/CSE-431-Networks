@@ -14,6 +14,7 @@ namespace PacketSniffer
     public static class DataContainer
     {
         public static Packet p;
+        public static byte[] b;
     }
     public static class Program
     {
