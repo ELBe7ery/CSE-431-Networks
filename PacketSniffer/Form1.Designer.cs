@@ -38,7 +38,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.listView1 = new System.Windows.Forms.ListView();
             this.No = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,7 +49,8 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.stopCaptureButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.startCapture_Button = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.dev_sel_lable = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.textBox1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -141,6 +141,7 @@
             this.SelectAdapter_Button.TabIndex = 9;
             this.SelectAdapter_Button.Text = "Select Adapter";
             this.SelectAdapter_Button.UseVisualStyleBackColor = true;
+            this.SelectAdapter_Button.Click += new System.EventHandler(this.SelectAdapter_Button_Click);
             // 
             // DeviceListView
             // 
@@ -195,30 +196,13 @@
             this.tabPage2.Controls.Add(this.listView1);
             this.tabPage2.Controls.Add(this.stopCaptureButton);
             this.tabPage2.Controls.Add(this.startCapture_Button);
-            this.tabPage2.Controls.Add(this.dev_sel_lable);
+            this.tabPage2.Controls.Add(this.materialFlatButton3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(846, 327);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Packets";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Depth = 0;
-            this.textBox1.Hint = "Filter Protocols";
-            this.textBox1.Location = new System.Drawing.Point(7, 67);
-            this.textBox1.MaxLength = 32767;
-            this.textBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '\0';
-            this.textBox1.SelectedText = "";
-            this.textBox1.SelectionLength = 0;
-            this.textBox1.SelectionStart = 0;
-            this.textBox1.Size = new System.Drawing.Size(159, 23);
-            this.textBox1.TabIndex = 13;
-            this.textBox1.TabStop = false;
-            this.textBox1.UseSystemPasswordChar = false;
             // 
             // listView1
             // 
@@ -234,7 +218,6 @@
             this.Length,
             this.columnHeader9,
             this.columnHeader3});
-            this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(3, 111);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(843, 210);
@@ -242,7 +225,6 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick_1);
             // 
             // No
             // 
@@ -310,23 +292,40 @@
             this.startCapture_Button.Text = "start capture";
             this.startCapture_Button.UseVisualStyleBackColor = true;
             // 
-            // dev_sel_lable
+            // materialFlatButton3
             // 
-            this.dev_sel_lable.AutoSize = true;
-            this.dev_sel_lable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.dev_sel_lable.Depth = 0;
-            this.dev_sel_lable.Enabled = false;
-            this.dev_sel_lable.Icon = null;
-            this.dev_sel_lable.Location = new System.Drawing.Point(268, 15);
-            this.dev_sel_lable.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.dev_sel_lable.MouseState = MaterialSkin.MouseState.HOVER;
-            this.dev_sel_lable.Name = "dev_sel_lable";
-            this.dev_sel_lable.Primary = false;
-            this.dev_sel_lable.Size = new System.Drawing.Size(262, 36);
-            this.dev_sel_lable.TabIndex = 0;
-            this.dev_sel_lable.Text = "Current selected adapter : None";
-            this.dev_sel_lable.UseVisualStyleBackColor = true;
-            this.dev_sel_lable.Click += new System.EventHandler(this.materialFlatButton3_Click);
+            this.materialFlatButton3.AutoSize = true;
+            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton3.Depth = 0;
+            this.materialFlatButton3.Enabled = false;
+            this.materialFlatButton3.Icon = null;
+            this.materialFlatButton3.Location = new System.Drawing.Point(268, 15);
+            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton3.Name = "materialFlatButton3";
+            this.materialFlatButton3.Primary = false;
+            this.materialFlatButton3.Size = new System.Drawing.Size(262, 36);
+            this.materialFlatButton3.TabIndex = 0;
+            this.materialFlatButton3.Text = "Current selected adapter : None";
+            this.materialFlatButton3.UseVisualStyleBackColor = true;
+            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Depth = 0;
+            this.textBox1.Hint = "Filter Protocols";
+            this.textBox1.Location = new System.Drawing.Point(7, 67);
+            this.textBox1.MaxLength = 32767;
+            this.textBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '\0';
+            this.textBox1.SelectedText = "";
+            this.textBox1.SelectionLength = 0;
+            this.textBox1.SelectionStart = 0;
+            this.textBox1.Size = new System.Drawing.Size(159, 23);
+            this.textBox1.TabIndex = 13;
+            this.textBox1.TabStop = false;
+            this.textBox1.UseSystemPasswordChar = false;
             // 
             // PacketSniffer
             // 
@@ -359,7 +358,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
         private System.Windows.Forms.TabPage tabPage2;
-        private MaterialSkin.Controls.MaterialFlatButton dev_sel_lable;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton3;
         private MaterialSkin.Controls.MaterialRaisedButton stopCaptureButton;
         private MaterialSkin.Controls.MaterialRaisedButton startCapture_Button;
         private MaterialSkin.Controls.MaterialRaisedButton SelectAdapter_Button;
