@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PacketDotNet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace PacketSniffer
 
     public static class DataContainer
     {
-        public static String data;
+        public static Packet p;
     }
     public static class Program
     {
