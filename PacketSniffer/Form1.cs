@@ -35,6 +35,7 @@ namespace PacketSniffer
         string src_port;
         string dst_port;
         int[] flags = new int[] { 0, 0, 0, 0 };
+        int clicked = 1;
         List<Packet> recieved_packets;
         public PacketSniffer()
         {
@@ -128,10 +129,7 @@ namespace PacketSniffer
             type = p.GetType().ToString();
             String y = p.ToString();//get all packet data and decompose it to get src ip,dst ip and protocol type
                                     //Console.WriteLine(y);
-            p.PayloadData = e.Packet.Data;
-            //int src_port = ((TcpPacket)p).SourcePort;
-            //if (((TcpPacket)p).SourcePort == 80 || ((TcpPacket)p).DestinationPort == 80)
-            //    y = y + "x";
+                
             //Append the recieved packet object to the array
             recieved_packets.Add(p);
             if (p != null)
@@ -265,7 +263,7 @@ namespace PacketSniffer
                 Number = packet_number.ToString();
                 Time = time.Hour.ToString() + " : " + time.Minute.ToString() + " : " + time.Second.ToString() + " : " + time.Millisecond.ToString();
                 packet_number++;
-                //DataContainer.data = info;
+                DataContainer.data = info;
                 //public class its name datacontainer and has global attribute 
                 //data to share it between form1 and form2
                 if (listView1.InvokeRequired)//add items in coloumns in listview
@@ -311,7 +309,6 @@ namespace PacketSniffer
                 selected_device = devices[DeviceListView.SelectedIndices[0]];
                 // move to the next tab
                 materialTabControl1.SelectedIndex = 1;
-                dev_sel_lable.Text = "Current Selected Device: DEV" + DeviceListView.SelectedIndices[0].ToString();
 
             }
             catch (Exception ex)
@@ -337,7 +334,6 @@ namespace PacketSniffer
         private void filter_packets(Packet p, string Number)
         {
             String y = p.ToString();
-            info = p.ToString();
             int j = 0;
             string h = " ";
             int flag1 = 0;
@@ -456,7 +452,7 @@ namespace PacketSniffer
                             if (item2.SubItems[4].Text != " UDP")
                             {
                                 item2.Remove();
-                                //Console.WriteLine(item2.SubItems[4].Text);
+                                Console.WriteLine(item2.SubItems[4].Text);
                             }
                             //}                            
                         }
@@ -495,7 +491,7 @@ namespace PacketSniffer
                             if (item2.SubItems[4].Text != " TCP")
                             {
                                 item2.Remove();
-                                //Console.WriteLine(item2.SubItems[4].Text);
+                                Console.WriteLine(item2.SubItems[4].Text);
                             }
                             //}                            
                         }
@@ -534,7 +530,7 @@ namespace PacketSniffer
                             if (item2.SubItems[4].Text != " HTTP")
                             {
                                 item2.Remove();
-                                //Console.WriteLine(item2.SubItems[4].Text);
+                                Console.WriteLine(item2.SubItems[4].Text);
                             }
                             //}                            
                         }
@@ -575,7 +571,7 @@ namespace PacketSniffer
                             if (item2.SubItems[4].Text != " DNS")
                             {
                                 item2.Remove();
-                                //Console.WriteLine(item2.SubItems[4].Text);
+                                Console.WriteLine(item2.SubItems[4].Text);
                             }
                             //}                            
                         }
@@ -627,7 +623,9 @@ namespace PacketSniffer
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Form2 msg = new Form2();//when item from listview is clicked form2 will be shown
 
+            msg.Show();
 
             // Show the settings form
 
@@ -635,6 +633,11 @@ namespace PacketSniffer
         }
 
         private void DeviceListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SelectAdapter_Button_Click(object sender, EventArgs e)
         {
 
         }
@@ -654,13 +657,6 @@ namespace PacketSniffer
 
         }
 
-
-        private void listView1_DoubleClick_1(object sender, EventArgs e)
-        {
-            Form2 msg = new Form2();//when item from listview is clicked form2 will be shown
-            DataContainer.p = recieved_packets[listView1.SelectedIndices[0]];
-            msg.Show();
-            //MessageBox.Show(listView1.SelectedIndices[0].ToString());
-        }
+        
     }
 }
