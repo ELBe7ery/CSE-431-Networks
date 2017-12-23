@@ -36,7 +36,6 @@
             this.SelectAdapter_Button = new MaterialSkin.Controls.MaterialRaisedButton();
             this.DeviceListView = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -51,8 +50,7 @@
             this.stopCaptureButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.startCapture_Button = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -103,14 +101,17 @@
             // 
             // materialTabControl1
             // 
+            this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.materialTabControl1.Controls.Add(this.tabPage1);
             this.materialTabControl1.Controls.Add(this.tabPage2);
             this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(3, 191);
+            this.materialTabControl1.Location = new System.Drawing.Point(3, 122);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(854, 284);
+            this.materialTabControl1.Size = new System.Drawing.Size(854, 353);
             this.materialTabControl1.TabIndex = 10;
             // 
             // tabPage1
@@ -122,7 +123,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(846, 258);
+            this.tabPage1.Size = new System.Drawing.Size(846, 327);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Adapter Setting";
             // 
@@ -147,10 +148,9 @@
             this.DeviceListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DeviceListView.CheckBoxes = true;
             this.DeviceListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader1});
             this.DeviceListView.Depth = 0;
-            this.DeviceListView.Font = new System.Drawing.Font("Roboto", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+            this.DeviceListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.DeviceListView.ForeColor = System.Drawing.Color.Transparent;
             this.DeviceListView.FullRowSelect = true;
             this.DeviceListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -170,11 +170,6 @@
             // 
             this.columnHeader1.Text = "Adapters List";
             this.columnHeader1.Width = 657;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "asd";
-            this.columnHeader2.Width = 120;
             // 
             // materialFlatButton2
             // 
@@ -197,6 +192,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.listView1);
             this.tabPage2.Controls.Add(this.stopCaptureButton);
             this.tabPage2.Controls.Add(this.startCapture_Button);
@@ -204,12 +200,15 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(846, 258);
+            this.tabPage2.Size = new System.Drawing.Size(846, 327);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Packets";
             // 
             // listView1
             // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.No,
             this.columnHeader4,
@@ -219,9 +218,9 @@
             this.Length,
             this.columnHeader9,
             this.columnHeader3});
-            this.listView1.Location = new System.Drawing.Point(3, 53);
+            this.listView1.Location = new System.Drawing.Point(3, 111);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(843, 202);
+            this.listView1.Size = new System.Drawing.Size(843, 210);
             this.listView1.TabIndex = 10;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -313,29 +312,26 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(14, 147);
+            this.textBox1.Depth = 0;
+            this.textBox1.Hint = "Filter Protocols";
+            this.textBox1.Location = new System.Drawing.Point(7, 67);
+            this.textBox1.MaxLength = 32767;
+            this.textBox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(659, 20);
-            this.textBox1.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(728, 154);
-            this.label1.MaximumSize = new System.Drawing.Size(100, 1000);
-            this.label1.MinimumSize = new System.Drawing.Size(10, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Filter";
+            this.textBox1.PasswordChar = '\0';
+            this.textBox1.SelectedText = "";
+            this.textBox1.SelectionLength = 0;
+            this.textBox1.SelectionStart = 0;
+            this.textBox1.Size = new System.Drawing.Size(159, 23);
+            this.textBox1.TabIndex = 13;
+            this.textBox1.TabStop = false;
+            this.textBox1.UseSystemPasswordChar = false;
             // 
             // PacketSniffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 522);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(869, 532);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.materialDivider2);
@@ -366,7 +362,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton stopCaptureButton;
         private MaterialSkin.Controls.MaterialRaisedButton startCapture_Button;
         private MaterialSkin.Controls.MaterialRaisedButton SelectAdapter_Button;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader No;
         private System.Windows.Forms.ColumnHeader columnHeader4;
@@ -375,9 +370,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader Length;
         private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Label label1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField textBox1;
     }
 }
 

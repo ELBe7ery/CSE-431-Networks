@@ -26,10 +26,10 @@ namespace PacketSniffer
 
         public PacketSniffer()
         {
-            //var materialSkinManager = MaterialSkinManager.Instance;
-            //materialSkinManager.AddFormToManage(this);
-            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal600, Primary.Teal800, Primary.Blue200, Accent.Orange700, TextShade.WHITE);
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal600, Primary.Teal800, Primary.Blue200, Accent.Orange700, TextShade.WHITE);
             //materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue600, Primary.Blue700, Primary.Blue200, Accent.Red100, TextShade.WHITE);
             InitializeComponent();
 
@@ -44,8 +44,17 @@ namespace PacketSniffer
 
         private void StopCaptureButton_Click(object sender, EventArgs e)
         {
-            selected_device.StopCapture();
-            selected_device.Close();
+            try
+            {
+                selected_device.StopCapture();
+                selected_device.Close();
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+
         }
 
 
@@ -226,8 +235,6 @@ namespace PacketSniffer
                     }
 
                 }
-
-
 
 
 
